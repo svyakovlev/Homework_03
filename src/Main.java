@@ -24,7 +24,7 @@ public class Main {
         //Задание №3
         int year = 2022;
         int yearDevide4 = year % 4;         //Является високосным
-        int yearDevide100 = year % 100;     //Не является високосным
+        int yearDevide100 = year % 100;     //Не является високосным, исключение х1000
         int yearDevide1000 = year % 1000;   //Является високосным
 
         if (yearDevide100 == 0 && yearDevide1000 != 0) {
@@ -76,6 +76,64 @@ public class Main {
                 System.out.println("Нет такого месяца");
         }
 
+        //Задание №6
+        int age = 19;
+        float salary = 48_000f;
+        int creditAge = 1;
+        float creditSalary = 1f;
+
+        if (age < 23) {
+            creditAge = 2;
+        } else {
+            creditAge = 3;
+        }
+
+        if (salary >= 80_000) {
+            creditSalary = 1.5f;
+        } else if (salary >= 50_000) {
+            creditSalary = 1.2f;
+        } else {
+            creditSalary = 1f;
+        }
+
+        float limit = salary * creditAge * creditSalary;
+        System.out.println("Мы готовы выдать вам кредитную карту с лимитом " + limit + " рублей.");
+
+        //Задание №7
+        age = 25;
+        salary = 60_000f;
+        int wantedSum = 330_000;
+        float baseRate = 10f;
+        float rate;
+        float rateSum;
+        float paymentMax = salary * 0.5f;
+
+        if (age < 23) {
+            rate = baseRate + 1f;
+        } else if (age < 30) {
+            rate = baseRate + 0.5f;
+        } else {
+            rate = baseRate;
+        }
+
+        if (salary > 80_000) {
+            rate = rate - 0.7f;
+        } else {
+            rate = rate;
+        }
+
+        rateSum = wantedSum * (1 + rate/100f);
+        float payment = rateSum/12f;
+        String approval;
+
+        if (payment <= paymentMax) {
+            approval = "Одобрено.";
+        } else {
+            approval = "Отказано.";
+        }
+
+        System.out.println("Максимальный платеж при зарплате " + salary + " равен " + paymentMax + " рублей.");
+        System.out.println("Платеж по кредиту " + payment + " рублей. " + approval);
 
     }
 }
